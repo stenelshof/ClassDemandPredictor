@@ -4,10 +4,17 @@ __credits__ = ["Silas Ten Elshof", "Mike Ryu"]
 __license__ = "MIT"
 __email__ = "Stenelshof@westmont.edu"
 
+import pandas as pd
+
 def main():
+    excel_file_path = '/Users/silastenelshof/Desktop/CS195/SeniorProjectFakeData1.xlsx'
+    df = pd.read_excel(excel_file_path)
+    df = df.dropna(subset=df.columns[:3])
+
+    students = df.values.tolist()
+    #print(students)
+
     cred_per_class = 3
-    # the first element is id, second element is number of semesters left, third is number of credits needed before grad
-    students = [[1, 5, 15], [2, 2, 6], [3, 4, 12], [4, 2, 12], [5, 1, 3]]
     sem_2_away_demand = 0
     sem_3_away_demand = 0
     sem_4_away_demand = 0
@@ -26,8 +33,8 @@ def main():
         cred_demand_per_sem = updated_student[2] / updated_student[1]
         class_demand_per_sem = cred_demand_per_sem/cred_per_class
         sem_2_away_demand += class_demand_per_sem
-    print(sem_2_away_demand)
-    print(updated_students2)
+    print("Demand for spots in philosophy classes in two semesters:", sem_2_away_demand)
+    #print(updated_students2)
 
 
     for student in updated_students2:
@@ -41,8 +48,8 @@ def main():
         cred_demand_per_sem = updated_student[2] / updated_student[1]
         class_demand_per_sem = cred_demand_per_sem/cred_per_class
         sem_3_away_demand += class_demand_per_sem
-    print(sem_3_away_demand)
-    print(updated_students3)
+    print("Demand for spots in philosophy classes in three semesters:", sem_3_away_demand)
+    #print(updated_students3)
 
 
     for student in updated_students3:
@@ -56,8 +63,8 @@ def main():
         cred_demand_per_sem = updated_student[2] / updated_student[1]
         class_demand_per_sem = cred_demand_per_sem/cred_per_class
         sem_4_away_demand += class_demand_per_sem
-    print(sem_4_away_demand)
-    print(updated_students4)
+    print("Demand for spots in philosophy classes in four semesters:", sem_4_away_demand)
+    #print(updated_students4)
 
 
 if __name__ == "__main__":
