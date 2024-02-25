@@ -9,9 +9,10 @@ import pandas as pd
 def main():
     excel_file_path = '/Users/silastenelshof/Desktop/CS195/SeniorProjectFakeData1.xlsx'
     df = pd.read_excel(excel_file_path)
-    df = df.dropna(subset=df.columns[:3])
+    df_subset = df.iloc[:, :3]
+    df_subset = df_subset.dropna(subset=df.columns[:3])
 
-    students = df.values.tolist()
+    students = df_subset.values.tolist()
     #print(students)
 
     cred_per_class = 3
